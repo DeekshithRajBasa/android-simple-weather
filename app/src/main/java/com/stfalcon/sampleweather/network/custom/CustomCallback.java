@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
-import com.thismo.app.R;
-import com.thismo.app.utils.AppUtilities;
+import com.stfalcon.sampleweather.utils.AppUtilities;
 
 import java.net.UnknownHostException;
 import java.util.concurrent.Executor;
@@ -50,9 +50,12 @@ public abstract class CustomCallback<T> implements Callback<T> {
     public void onFailure(Call<T> call, Throwable t) {
         //TODO handle exceptions for different cases
         if (t instanceof UnknownHostException) {
-            execute(() -> AppUtilities.showToast(context, R.string.error_no_connection, false));
+            execute(() -> AppUtilities.showToast(context, "no connection", false));
         } else if (onFailureListener == null) {
-            execute(() -> AppUtilities.showToast(context, "Houston, we have a problem " + t.getMessage(), false));
+            execute(() -> {
+                AppUtilities.showToast(context, "Houston, we have a problem " + t.getMessage(), false);
+                Log.i("TAG", "onFailure: " + t.getMessage());
+            });
         } else executeFailure(t);
     }
 
