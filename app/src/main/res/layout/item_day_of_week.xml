@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_margin="16dp"
-        android:text="@{@string/temperature(viewModel.temperature.get)}"
         android:textSize="25sp" />
 
     <TextView
@@ -20,7 +19,6 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_margin="16dp"
-        android:text="@{@string/sky(viewModel.sky.get)}"
         android:textSize="25sp" />
 
     <TextView
@@ -29,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        android:text="@{@string/pressure(viewModel.pressure.get)}"
         android:textSize="25sp" />
 
 </RelativeLayout>
