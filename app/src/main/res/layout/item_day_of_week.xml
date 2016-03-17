@@ -1,44 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import
+            alias="date"
+            type="com.stfalcon.sampleweather.utils.DateUtilities" />
+
+        <import
+            alias="url"
+            type="com.stfalcon.sampleweather.utils.UrlImageBuilder" />
+
+        <import
+            alias="number"
+            type="com.stfalcon.sampleweather.utils.NumberUtilities" />
 
         <variable
             name="weather"
             type="com.stfalcon.sampleweather.models.DayOfWeekWeather" />
     </data>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:text="@{date.dateFromUnix(weather.dt)}"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:textSize="18sp"
-            android:text="@{@string/temperature_item(weather.temp.day+``)}"/>
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/tvDate"
+            android:text="@{number.formatNumber(weather.temp.day)}"
+            android:textSize="32sp"
+            android:background="@null"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvTemperature"
+            android:layout_alignTop="@+id/tvTemperature"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text=" &#8451;"/>
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            app:error="@{@drawable/load_error}"
+            app:imageUrl="@{url.build(weather.weather[0].icon)}" />
 
         <TextView
             android:id="@+id/tvSky"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/tvPressure"
-            android:layout_toRightOf="@+id/tvTemperature"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"
-            android:text="@{@string/sky(weather.weather[0].description)}"/>
+            android:layout_below="@+id/imgIcon"
+            android:layout_centerHorizontal="true"
+            android:text="@{@string/sky(weather.weather[0].description)}"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:text="@{@string/pressure_item(weather.pressure+``)}"/>
+            android:gravity="center_horizontal"
+            android:text="@{@string/pressure_item(weather.pressure+``)}"
+            android:textSize="18sp" />
 
     </RelativeLayout>
+
 </layout>

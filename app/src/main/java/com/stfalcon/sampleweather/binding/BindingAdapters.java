@@ -1,6 +1,7 @@
 package com.stfalcon.sampleweather.binding;
 
 import android.databinding.BindingAdapter;
+import android.graphics.drawable.Drawable;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +12,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.stfalcon.sampleweather.R;
 import com.stfalcon.sampleweather.binding.fields.ObservableBoolean;
 import com.stfalcon.sampleweather.binding.fields.ObservableString;
@@ -142,7 +145,13 @@ public class BindingAdapters {
         recyclerView.setLayoutManager(layoutManager);
     }
 
-   /* @BindingAdapter("android:src")
+    @BindingAdapter({"bind:imageUrl", "bind:error"})
+    public static void loadImage(ImageView view, String url, Drawable error) {
+        Picasso.with(view.getContext()).load(url).error(error).into(view);
+    }
+   /*
+
+   @BindingAdapter("android:src")
     public static void loadImage(ImageView view, String url) {
         AppUtilities.loadImage(view, url);
     }

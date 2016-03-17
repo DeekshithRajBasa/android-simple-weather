@@ -47,5 +47,4 @@ public class MainActivityVM extends ActivityViewModel<MainActivity, ActivityMain
         });
     }
 
-
 }

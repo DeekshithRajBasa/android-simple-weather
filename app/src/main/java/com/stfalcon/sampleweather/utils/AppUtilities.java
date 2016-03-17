@@ -29,8 +29,6 @@ public final class AppUtilities {
         }
     }
 
-
-
     public static void doWithDelay(Activity activity, long delay, Runnable runnable) {
         final Handler handler = new Handler();
         handler.postDelayed(() -> activity.runOnUiThread(runnable), delay);

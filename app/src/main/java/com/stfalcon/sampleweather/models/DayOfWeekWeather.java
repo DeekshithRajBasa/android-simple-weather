@@ -6,18 +6,18 @@ import java.util.ArrayList;
  * Created by artem on 16.03.16.
  */
 public class DayOfWeekWeather {
-    private float dp;
+    private long dt;
     private Temperature temp;
     private float pressure;
     private float humidity;
     private ArrayList<Sky> weather;
 
-    public float getDp() {
-        return dp;
+    public long getDt() {
+        return dt;
     }
 
-    public void setDp(float dp) {
-        this.dp = dp;
+    public void setDt(long dt) {
+        this.dt = dt;
     }
 
     public Temperature getTemp() {

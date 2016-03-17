@@ -8,7 +8,7 @@
     <string name="pressure">Pressure %1$s kPa</string>
     <string name="humidity">Humidity %1$s percent</string>
     <string name="sky"> %1$s</string>
-    <string name="pressure_item">%1$s kPa</string>
-    <string name="temperature_item">%1$s C</string>
+    <string name="pressure_item">%1$s \n kPa</string>
+    <string name="temperature_item">%1$s &#8451;</string>
 
 </resources>
