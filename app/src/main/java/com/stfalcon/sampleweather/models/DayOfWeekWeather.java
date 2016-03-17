@@ -1,5 +1,7 @@
 package com.stfalcon.sampleweather.models;
 
+import java.util.ArrayList;
+
 /**
  * Created by artem on 16.03.16.
  */
@@ -8,7 +10,7 @@ public class DayOfWeekWeather {
     private Temperature temp;
     private float pressure;
     private float humidity;
-    private Sky []weather;
+    private ArrayList<Sky> weather;
 
     public float getDp() {
         return dp;
@@ -42,11 +44,11 @@ public class DayOfWeekWeather {
         this.humidity = humidity;
     }
 
-    public Sky[] getWeather() {
+    public ArrayList<Sky> getWeather() {
         return weather;
     }
 
-    public void setWeather(Sky[] weather) {
+    public void setWeather(ArrayList<Sky> weather) {
         this.weather = weather;
     }
 }

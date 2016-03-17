@@ -3,6 +3,7 @@ package com.stfalcon.sampleweather.binding;
 import android.databinding.BindingAdapter;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
@@ -131,6 +132,16 @@ public class BindingAdapters {
         view.setNavigationOnClickListener(v -> runnable.run());
     }
 
+    @BindingAdapter("app:adapter")
+    public static void bindAdapter(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter) {
+        recyclerView.setAdapter(adapter);
+    }
+
+    @BindingAdapter("app:layoutManager")
+    public static void bindLayoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager) {
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
    /* @BindingAdapter("android:src")
     public static void loadImage(ImageView view, String url) {
         AppUtilities.loadImage(view, url);
@@ -159,16 +170,6 @@ public class BindingAdapters {
     @BindingAdapter({"android:src", "app:sizeX", "app:sizeY"})
     public static void loadImage(ImageView view, String url, int sizeX, int sizeY) {
         AppUtilities.loadImage(view, url, sizeX, sizeY);
-    }
-
-    @BindingAdapter("app:layoutManager")
-    public static void bindLayoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager) {
-        recyclerView.setLayoutManager(layoutManager);
-    }
-
-    @BindingAdapter("app:adapter")
-    public static void bindAdapter(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter) {
-        recyclerView.setAdapter(adapter);
     }
 
     @BindingAdapter("app:status")

@@ -1,18 +1,20 @@
 package com.stfalcon.sampleweather.models;
 
+import java.util.ArrayList;
+
 /**
  * Created by artem on 16.03.16.
  */
 public class WeekWeatherResponse {
 
     private String cod;
-    private DayOfWeekWeather []list;
+    private ArrayList<DayOfWeekWeather> list;
 
-    public DayOfWeekWeather[] getList() {
+    public ArrayList<DayOfWeekWeather> getList() {
         return list;
     }
 
-    public void setList(DayOfWeekWeather[] list) {
+    public void setList(ArrayList<DayOfWeekWeather> list) {
         this.list = list;
     }
 
