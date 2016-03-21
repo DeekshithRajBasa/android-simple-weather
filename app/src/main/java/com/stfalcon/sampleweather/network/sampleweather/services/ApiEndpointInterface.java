@@ -13,8 +13,8 @@ import retrofit2.http.Query;
  */
 public interface ApiEndpointInterface {
     @GET("data/2.5/weather" + BuildConfig.API_KEY + BuildConfig.WEATHER_METRIC)
-    Call<WeatherResponse> getWeather(@Query("q") String cityName);
+    Call<WeatherResponse> getWeather(@Query("lat") Double lat, @Query("lon") Double lon);
 
     @GET("data/2.5/forecast/daily" + BuildConfig.API_KEY + BuildConfig.WEATHER_METRIC )
-    Call<WeekWeatherResponse> getWeekWeather(@Query("q") String cityName);
+    Call<WeekWeatherResponse> getWeekWeather(@Query("lat") Double lat, @Query("lon") Double lon);
 }

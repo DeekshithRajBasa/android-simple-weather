@@ -18,28 +18,23 @@ public class SimpleWeatherCallback<T> extends CustomCallback<T> {
         super(context, call, onSuccessListener, onFailureListener);
     }
 
-    private void onUnauthorized() {
-//        new SimpleWeatherClient(getContext()).getService(UserService.class)
-//                .getCurrent().enqueue(getContext(),
-//                response -> {
-//                    Preferences.getManager().setCurrentUser(getContext(), response.body());
-//                    getCall().clone().enqueue(this);
-//                });
-    }
-
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
         if (response.isSuccess()) {
             super.onResponse(call, response);
         } else {
             switch (Status.fromInt(response.code())) {
-                case UNAUTHORIZED:
-                    onUnauthorized();
+                case API_ERROR:
+                    retry(call);
                     break;
                 default:
                     super.onFailure(call, new Throwable(response.message()));
             }
         }
+    }
+
+    private void retry(Call<T> call) {
+        call.enqueue(this);
     }
 
     @Override

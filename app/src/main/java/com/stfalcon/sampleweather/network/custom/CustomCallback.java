@@ -50,7 +50,7 @@ public abstract class CustomCallback<T> implements Callback<T> {
     public void onFailure(Call<T> call, Throwable t) {
         //TODO handle exceptions for different cases
         if (t instanceof UnknownHostException) {
-            execute(() -> AppUtilities.showToast(context, "no connection", false));
+            execute(() -> AppUtilities.showToast(context, "Check connection to Internet", true));
         } else if (onFailureListener == null) {
             execute(() -> {
                 AppUtilities.showToast(context, "Houston, we have a problem " + t.getMessage(), false);

@@ -16,6 +16,7 @@ public enum Status {
     UNAUTHORIZED(401),
     FORBIDDEN(403),
     NOT_FOUND(404),
+    API_ERROR(429),
 
     INTERNAL_SERVER_ERROR(500),
     BAD_GATEWAY(502);
@@ -41,6 +42,7 @@ public enum Status {
             case 401: return UNAUTHORIZED;
             case 403: return FORBIDDEN;
             case 404: return NOT_FOUND;
+            case 429: return API_ERROR;
 
             case 500: return INTERNAL_SERVER_ERROR;
             case 502: return BAD_GATEWAY;

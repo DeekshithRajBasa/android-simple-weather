@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+        <import
+            alias="number"
+            type="com.stfalcon.sampleweather.utils.NumberUtilities" />
 
         <variable
             name="viewModel"
@@ -13,68 +18,102 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="@string/weather"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:visibility="visible"/>
-
-        <Spinner
-            android:id="@+id/spCountry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvText"
-            android:layout_margin="16dp"
-            android:visibility="gone"/>
-
-        <Spinner
-            android:id="@+id/spCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spCountry"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:visibility="gone"/>
-
-        <TextView
             android:id="@+id/tvTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spCity"
-            android:layout_margin="16dp"
-            android:text="@{@string/temperature(viewModel.temperature.get)}"
-            android:textSize="25sp" />
+            android:layout_above="@+id/imgWeather"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="24dp"
+            android:text="@{number.formatNumber(viewModel.temperature.get)}"
+            android:textSize="35sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvTemperature"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/tvTemperature"
+            android:text=" &#8451;"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTemperature"
-            android:layout_margin="16dp"
+            android:layout_above="@+id/imgWeather"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
             android:text="@{@string/pressure(viewModel.pressure.get)}"
-            android:textSize="25sp" />
+            android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPressure"
-            android:layout_margin="16dp"
-            android:text="@{@string/humidity(viewModel.humidity.get)}"
-            android:textSize="25sp" />
+        <ImageView
+            android:id="@+id/imgWeather"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_above="@+id/center"
+            android:layout_centerHorizontal="true"
+            app:setImage="@{viewModel.skyIco.get}" />
+
+        <View
+            android:id="@+id/center"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="-50dp" />
 
         <TextView
             android:id="@+id/tvSky"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvHumidity"
-            android:layout_margin="16dp"
+            android:layout_below="@+id/imgWeather"
+            android:layout_centerHorizontal="true"
             android:text="@{@string/sky(viewModel.sky.get)}"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSky"
+            android:layout_centerHorizontal="true"
+            android:text="@{@string/humidity(viewModel.humidity.get)}"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvCityLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvCity"
+            android:layout_marginLeft="24dp"
+            android:text="@string/position"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="24dp"
+            android:text="@{viewModel.city.get}"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:id="@+id/rlLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isLoading.get ? View.VISIBLE : View.GONE}"
+            android:background="@color/white">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -1,9 +1,9 @@
 package com.stfalcon.sampleweather.ui.fragments;
 
 
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.stfalcon.sampleweather.BR;
 import com.stfalcon.sampleweather.R;
@@ -28,6 +28,7 @@ import retrofit2.Response;
 public class WeekWeatherFragmentVM extends FragmentViewModel<WeekWeatherFragment, FragmentWeekWeatherBinding> {
 
     private static final String TAG = "TAG_WEEK";
+    private static final int DELAY_LENGTH = 1000;
     public RecyclerBindingAdapter<DayOfWeekWeather> adapter = new RecyclerBindingAdapter<>();
     public LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
     public RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getActivity()
@@ -41,12 +42,6 @@ public class WeekWeatherFragmentVM extends FragmentViewModel<WeekWeatherFragment
     @Override
     protected void initialize(FragmentWeekWeatherBinding binding) {
 
-        new SimpleWeatherClient(getActivity()).getService(ApiEndpointInterface.class)
-                .getWeekWeather("London").enqueue(getActivity(), this::onWeekWeatherResponse);
-    }
-
-    private void onWeekWeatherResponse(Response<WeekWeatherResponse> weekWeatherResponseResponse) {
-        adapter.setItems(weekWeatherResponseResponse.body().getList());
     }
 
     private void initAdapter() {
@@ -56,7 +51,19 @@ public class WeekWeatherFragmentVM extends FragmentViewModel<WeekWeatherFragment
 
     @Subscribe
     public void onLocationChangeEvent(LocationChangeEvent event){
-        Toast.makeText(getActivity(), event.currentLocation.toString(), Toast.LENGTH_LONG).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                new SimpleWeatherClient(getActivity()).getService(ApiEndpointInterface.class)
+                        .getWeekWeather(event.currentLocation.getLatitude(),
+                                event.currentLocation.getLongitude())
+                        .enqueue(getActivity(), this::onWeekWeatherResponse);
+            }
+
+            private void onWeekWeatherResponse(Response<WeekWeatherResponse> weekWeatherResponseResponse) {
+                adapter.setItems(weekWeatherResponseResponse.body().getList());
+            }
+        }, DELAY_LENGTH);
     }
 
     @Override

@@ -4,11 +4,12 @@
 
     <string name="app_name">SampleWeather</string>
     <string name="weather">Please select region</string>
-    <string name="temperature">Temperature %1$s C</string>
-    <string name="pressure">Pressure %1$s kPa</string>
+    <string name="temperature">%1$s C</string>
+    <string name="pressure">%1$s \nkPa</string>
     <string name="humidity">Humidity %1$s percent</string>
     <string name="sky"> %1$s</string>
     <string name="pressure_item">%1$s \n kPa</string>
     <string name="temperature_item">%1$s &#8451;</string>
+    <string name="position">current position:</string>
 
 </resources>

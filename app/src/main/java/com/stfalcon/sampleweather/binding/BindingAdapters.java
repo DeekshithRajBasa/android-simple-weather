@@ -1,5 +1,6 @@
 package com.stfalcon.sampleweather.binding;
 
+import android.content.res.Resources;
 import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
 import android.support.v4.util.Pair;
@@ -154,6 +155,16 @@ public class BindingAdapters {
     public static void bindAddItemDecorator(RecyclerView recyclerView, RecyclerView.ItemDecoration decoration) {
         recyclerView.addItemDecoration(decoration);
     }
+
+    @BindingAdapter("app:setImage")
+    public static void loadImage(ImageView view, String idFromApi) {
+        String name = "ic_" + idFromApi;
+        Resources resources = view.getContext().getResources();
+        final int resourceId = resources.getIdentifier(name, "drawable",
+                view.getContext().getPackageName());
+        view.setImageResource(resourceId);
+    }
+
    /*
 
    @BindingAdapter("android:src")

@@ -8,6 +8,7 @@ public class WeatherResponse {
     private String base;
     private Weather main;
     private Sky []weather;
+    private String name;
 
     public Sky[] getWeather() {
         return weather;
@@ -39,5 +40,13 @@ public class WeatherResponse {
 
     public void setMain(Weather main) {
         this.main = main;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
