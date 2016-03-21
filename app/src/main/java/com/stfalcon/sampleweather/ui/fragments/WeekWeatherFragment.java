@@ -28,4 +28,13 @@ public class WeekWeatherFragment extends BindingFragment<WeekWeatherFragmentVM, 
         getBinding().setViewModel(viewModel);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }

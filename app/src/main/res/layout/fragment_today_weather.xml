@@ -20,14 +20,16 @@
             android:layout_marginTop="10dp"
             android:text="@string/weather"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="visible"/>
 
         <Spinner
             android:id="@+id/spCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvText"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:visibility="gone"/>
 
         <Spinner
             android:id="@+id/spCity"
@@ -35,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/spCountry"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tvTemperature"

@@ -17,7 +17,7 @@ public class MainActivityVM extends ActivityViewModel<MainActivity, ActivityMain
     }
 
     private void initTabs() {
-        
+
         getActivity().setSupportActionBar(getBinding().toolbar);
 
         TabLayout tabLayout = getBinding().tabLayout;

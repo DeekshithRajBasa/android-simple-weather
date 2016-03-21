@@ -44,4 +44,21 @@ public abstract class FragmentViewModel<F extends BindingFragment, B extends Vie
         this.binding = binding;
         initialize(binding);
     }
+
+    public void onStart() {
+
+    }
+
+    public void onStop() {
+
+    }
+
+    public void onPause() {
+
+    }
+
+
+    public void onResume() {
+
+    }
 }

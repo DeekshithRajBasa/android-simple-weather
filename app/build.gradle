@@ -70,6 +70,9 @@ dependencies {
     compile 'io.karim:materialtabs:2.0.3'
     compile 'com.android.support:design:23.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+    compile 'com.google.android.gms:play-services-location:8.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
     //REST
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.0-RC1'

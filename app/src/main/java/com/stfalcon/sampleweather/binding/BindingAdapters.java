@@ -149,6 +149,11 @@ public class BindingAdapters {
     public static void loadImage(ImageView view, String url, Drawable error) {
         Picasso.with(view.getContext()).load(url).error(error).into(view);
     }
+
+    @BindingAdapter("app:decorator")
+    public static void bindAddItemDecorator(RecyclerView recyclerView, RecyclerView.ItemDecoration decoration) {
+        recyclerView.addItemDecoration(decoration);
+    }
    /*
 
    @BindingAdapter("android:src")

@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="@{viewModel.layoutManager}"
-            app:adapter="@{viewModel.adapter}">
+            app:adapter="@{viewModel.adapter}"
+            app:decorator="@{viewModel.decoration}">
 
         </android.support.v7.widget.RecyclerView>
 
